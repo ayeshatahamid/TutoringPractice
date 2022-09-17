@@ -4,7 +4,7 @@ using namespace std;
 /*** Passing by Pointer ***/
 
 void ChangeOriginal(int* num) {
-    num++;
+    *num +=1;
 }
 
 class Pencil {
@@ -82,11 +82,16 @@ int main() {
     //You can pass in a pointer OR an address into a function
     //Uses: saves space and can change original data passed in while being a void function
     int num = 2;
-    ChangeOriginal(&num);
-    /*void ChangeOriginal(int* num) {
-        num++;
-    }*/
+    int* anotherPtr = &num;
 
+    //these 2 function calls act the same
+    ChangeOriginal(anotherPtr);
+    ChangeOriginal(&num);
+
+    /*void ChangeOriginal(int* num) {
+        *num+=1;
+    }*/
+    cout << "Passing pointer thru function: " << num << endl;
     //if ChangeOriginal did not pass in a pointer, then the variable would not have changed
 
 
